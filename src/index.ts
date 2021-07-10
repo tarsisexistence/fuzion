@@ -6,7 +6,7 @@
  * Has
  * Find
  */
-export function fusion<T>(
+export function fuzion<T>(
   input: T[],
   ...handlers: (Map<T, any> | Filter<T> | ForEach<T>)[]
 ): T[] {
