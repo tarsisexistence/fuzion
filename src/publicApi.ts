@@ -1,1 +1,1 @@
-export { noop } from './utils';
+export * from './index';
