@@ -1,4 +1,7 @@
-import { fuzion, filter, map, forEach } from './index';
+import { fuzion } from './fuzion';
+import { map } from './map';
+import { filter } from './filter';
+import { forEach } from './forEach';
 
 describe('fuzion', () => {
   test('should return empty array when input is empty and empty handlers', () => {
