@@ -1,7 +1,7 @@
 import { fuzion } from './fuzion';
 import { map } from './map/map';
 import { filter } from './filter/filter';
-import { forEach } from './forEach';
+import { forEach } from './forEach/forEach';
 
 describe('fuzion', () => {
   test('should return empty array when input is empty and empty handlers', () => {
@@ -20,15 +20,6 @@ describe('fuzion', () => {
         map<number, number>(a => a * 2)
       )
     ).toEqual([12, 18]);
-  });
-
-  test('should iterate over array but do not change anything', () => {
-    expect(
-      fuzion(
-        [1, 2, 3],
-        forEach(a => a * 2)
-      )
-    ).toEqual([1, 2, 3]);
   });
 
   test('should have number auto typing', () => {

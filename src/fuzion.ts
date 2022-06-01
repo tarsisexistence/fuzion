@@ -1,6 +1,6 @@
 import type { Map } from './map/map';
 import type { Filter } from './filter/filter';
-import type { ForEach } from './forEach';
+import type { ForEach } from './forEach/forEach';
 import { Type } from './common';
 
 /**

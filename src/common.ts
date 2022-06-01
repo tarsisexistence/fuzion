@@ -1,5 +1,5 @@
 export enum Type {
   MAP = 'MAP',
   FILTER = 'FILTER',
-  FOREACH = 'FOREACH'
+  FOR_EACH = 'FOR_EACH'
 }
