@@ -13,9 +13,9 @@ import { Type } from './common';
  */
 export function fuzion<T>(
   input: T[],
-  ...handlers: (Map<T, any> | Filter<T> | ForEach<T>)[]
+  ...operators: (Map<T, any> | Filter<T> | ForEach<T>)[]
 ): T[] {
-  if (input.length === 0 || handlers.length === 0) {
+  if (input.length === 0 || operators.length === 0) {
     return input;
   }
 
@@ -23,23 +23,23 @@ export function fuzion<T>(
 
   for (let index = 0; index < input.length; index += 1) {
     let currentValue = input[index];
-    let shouldContinue = false;
+    let shouldSkip = false;
 
-    for (const handler of handlers) {
-      const node = handler(currentValue, index);
+    for (const operator of operators) {
+      const value = operator.run(currentValue, index);
 
-      if (node.type === Type.MAP) {
-        currentValue = node.value;
-      } else if (node.type === Type.FILTER && !node.value) {
-        shouldContinue = true;
+      if (operator.type === Type.MAP) {
+        currentValue = value;
+      } else if (operator.type === Type.FILTER && !value) {
+        // no need to run any handler next, it's abandoned value now
+        shouldSkip = true;
         continue;
       }
     }
 
-    if (shouldContinue) {
+    if (shouldSkip) {
       continue;
-
-      shouldContinue = false;
+      shouldSkip = false;
     }
 
     output.push(currentValue);

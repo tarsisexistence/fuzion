@@ -1,19 +1,15 @@
 import { Type } from '../common';
 
-export type Map<TValue, TResult> = (
-  value: TValue,
-  index: number
-) => MapResult<TResult>;
-export interface MapResult<T> {
+export type Map<TValue, TResult> = {
   type: Type.MAP;
-  value: T;
-}
+  run: (value: TValue, index: number) => TResult;
+};
 
 export function map<TValue, TResult>(
   callback: (value: TValue, index: number) => TResult
 ): Map<TValue, TResult> {
-  return (value: TValue, index: number) => ({
+  return {
     type: Type.MAP,
-    value: callback(value, index)
-  });
+    run: (value: TValue, index: number) => callback(value, index)
+  };
 }

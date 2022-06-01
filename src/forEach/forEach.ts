@@ -1,10 +1,9 @@
 import { Type } from '../common';
 
-export type ForEach<T> = (value: T, index: number) => ForEachResult;
-export interface ForEachResult {
+export type ForEach<T> = {
   type: Type.FOR_EACH;
-  value: void;
-}
+  run: (value: T, index: number) => void;
+};
 
 /**
  * rxjs "tap" analogue
@@ -13,8 +12,8 @@ export interface ForEachResult {
 export function forEach<TValue>(
   callback: (value: TValue, index: number) => void
 ): ForEach<TValue> {
-  return (value: TValue, index: number) => ({
+  return {
     type: Type.FOR_EACH,
-    value: callback(value, index)
-  });
+    run: (value: TValue, index: number) => callback(value, index)
+  };
 }
