@@ -1,6 +1,7 @@
 import type { Map } from './map';
 import type { Filter } from './filter';
 import type { ForEach } from './forEach';
+import { Type } from './common';
 
 /**
  * Typing https://github.com/ReactiveX/rxjs/blob/master/src/internal/util/pipe.ts
@@ -27,9 +28,9 @@ export function fuzion<T>(
     for (const handler of handlers) {
       const node = handler(currentValue, index);
 
-      if (node.type === 'map') {
+      if (node.type === Type.MAP) {
         currentValue = node.value;
-      } else if (node.type === 'filter' && !node.value) {
+      } else if (node.type === Type.FILTER && !node.value) {
         shouldContinue = true;
         continue;
       }

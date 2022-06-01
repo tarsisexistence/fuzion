@@ -1,14 +1,16 @@
+import { Type } from './common';
+
 export type Filter<T> = (value: T, index: number) => FilterResult;
 export interface FilterResult {
-  type: 'filter';
+  type: Type.FILTER;
   value: boolean;
 }
 
-export function filter<T>(
-  predicate: (value: T, index?: number) => boolean
-): (value: T, index: number) => FilterResult {
-  return (value: T, index: number) => ({
-    type: 'filter',
+export function filter<TValue>(
+  predicate: (value: TValue, index?: number) => boolean
+): Filter<TValue> {
+  return (value: TValue, index: number) => ({
+    type: Type.FILTER,
     value: predicate(value, index)
   });
 }
