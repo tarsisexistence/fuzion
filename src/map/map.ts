@@ -10,7 +10,7 @@ export interface MapResult<T> {
 }
 
 export function map<TValue, TResult>(
-  callback: (value: TValue, index?: number) => TResult
+  callback: (value: TValue, index: number) => TResult
 ): Map<TValue, TResult> {
   return (value: TValue, index: number) => ({
     type: Type.MAP,

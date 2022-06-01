@@ -7,7 +7,7 @@ export interface FilterResult {
 }
 
 export function filter<TValue>(
-  predicate: (value: TValue, index?: number) => boolean
+  predicate: (value: TValue, index: number) => boolean
 ): Filter<TValue> {
   return (value: TValue, index: number) => ({
     type: Type.FILTER,

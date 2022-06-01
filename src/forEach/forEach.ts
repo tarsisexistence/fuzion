@@ -6,8 +6,12 @@ export interface ForEachResult {
   value: void;
 }
 
+/**
+ * rxjs "tap" analogue
+ * does not change array values
+ */
 export function forEach<TValue>(
-  callback: (value: TValue, index?: number) => void
+  callback: (value: TValue, index: number) => void
 ): ForEach<TValue> {
   return (value: TValue, index: number) => ({
     type: Type.FOR_EACH,
