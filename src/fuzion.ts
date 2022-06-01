@@ -33,13 +33,13 @@ export function fuzion<T>(
       } else if (operator.type === Type.FILTER && !value) {
         // no need to run any handler next, it's abandoned value now
         shouldSkip = true;
-        continue;
+        break;
       }
     }
 
     if (shouldSkip) {
-      continue;
       shouldSkip = false;
+      continue;
     }
 
     output.push(currentValue);
