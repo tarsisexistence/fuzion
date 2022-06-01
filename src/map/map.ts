@@ -1,4 +1,4 @@
-import { Type } from './common';
+import { Type } from '../common';
 
 export type Map<TValue, TResult> = (
   value: TValue,

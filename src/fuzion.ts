@@ -1,4 +1,4 @@
-import type { Map } from './map';
+import type { Map } from './map/map';
 import type { Filter } from './filter';
 import type { ForEach } from './forEach';
 import { Type } from './common';
