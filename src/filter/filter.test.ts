@@ -1,7 +1,7 @@
 import { fuzion } from '../fuzion';
 import { filter } from './filter';
 
-describe('filter', () => {
+describe('[operator] filter', () => {
   test('should filter items more than 5', () => {
     expect(
       fuzion(

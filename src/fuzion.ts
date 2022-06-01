@@ -2,6 +2,7 @@ import type { Map } from './map/map';
 import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach/forEach';
 import { Type } from './common';
+import { Take } from './take/take';
 
 /**
  * Typing https://github.com/ReactiveX/rxjs/blob/master/src/internal/util/pipe.ts
@@ -13,15 +14,25 @@ import { Type } from './common';
  */
 export function fuzion<T>(
   input: T[],
-  ...operators: (Map<T, any> | Filter<T> | ForEach<T>)[]
+  ...operators: (Map<T, any> | Filter<T> | ForEach<T> | Take)[]
 ): T[] {
   if (input.length === 0 || operators.length === 0) {
     return input;
   }
 
   const output: T[] = [];
+  let length = input.length;
 
-  for (let index = 0; index < input.length; index += 1) {
+  operators = operators.filter(operator => {
+    if (operator.type === Type.TAKE) {
+      length = Math.min(length, operator.run());
+      return false;
+    }
+
+    return true;
+  });
+
+  for (let index = 0; index < length; index += 1) {
     let currentValue = input[index];
     let shouldSkip = false;
 

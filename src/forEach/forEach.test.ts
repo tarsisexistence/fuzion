@@ -1,7 +1,7 @@
 import { fuzion } from '../fuzion';
 import { forEach } from './forEach';
 
-describe('fuzion', () => {
+describe('[operator] forEach', () => {
   test('should iterate over array but do not change anything', () => {
     expect(
       fuzion(

@@ -1,7 +1,7 @@
 import { map } from './map';
 import { fuzion } from '../fuzion';
 
-describe('map', () => {
+describe('[operator] map', () => {
   test('should return indices', () => {
     expect(
       fuzion(
