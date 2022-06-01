@@ -14,4 +14,17 @@ describe('filter', () => {
   test('should filter with Boolean', () => {
     expect(fuzion([true, false, true], filter(Boolean))).toEqual([true, true]);
   });
+
+  test('should filter even index', () => {
+    expect(fuzion([true, false, true], filter(Boolean))).toEqual([true, true]);
+  });
+
+  test('should filter even indices', () => {
+    expect(
+      fuzion(
+        ['q', 'w', 'e', 'r', 't', 'y'],
+        filter((_, i) => i % 2 === 0)
+      )
+    ).toEqual(['q', 'e', 't']);
+  });
 });

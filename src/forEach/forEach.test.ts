@@ -10,4 +10,17 @@ describe('fuzion', () => {
       )
     ).toEqual([1, 2, 3]);
   });
+
+  test('should have side effect', () => {
+    const arr = [1, 2, 3];
+
+    fuzion(
+      arr,
+      forEach((value, index) => {
+        return (arr[index] = value + index);
+      })
+    );
+
+    expect(arr).toEqual([1, 3, 5]);
+  });
 });
