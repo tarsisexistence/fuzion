@@ -4,5 +4,5 @@
   "branchPrefix": "bump/",
   "branchConcurrentLimit": 0,
   "enabled": true,
-  "assignees": ["retarsis"]
+  "assignees": ["tarsinzer"]
 }
