@@ -20,7 +20,7 @@
   },
   "workspace": true,
   "devDependencies": {
-    "@types/jest": "27.5.2",
+    "@types/jest": "28.1.0",
     "@typescript-eslint/parser": "5.27.0",
     "husky": "4.3.8",
     "lint-staged": "12.5.0",
