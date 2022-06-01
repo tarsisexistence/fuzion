@@ -1,4 +1,4 @@
-import { Type } from './common';
+import { Type } from '../common';
 
 export type Filter<T> = (value: T, index: number) => FilterResult;
 export interface FilterResult {

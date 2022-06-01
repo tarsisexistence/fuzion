@@ -1,6 +1,6 @@
 import { fuzion } from './fuzion';
 import { map } from './map/map';
-import { filter } from './filter';
+import { filter } from './filter/filter';
 import { forEach } from './forEach';
 
 describe('fuzion', () => {
@@ -10,15 +10,6 @@ describe('fuzion', () => {
 
   test('should return input array when empty handlers array', () => {
     expect(fuzion([1, 2, 3])).toEqual([1, 2, 3]);
-  });
-
-  test('should filter items more than 5', () => {
-    expect(
-      fuzion(
-        [1, 3, 6, 9],
-        filter(a => a > 5)
-      )
-    ).toEqual([6, 9]);
   });
 
   test('should filter items more than 5 and map them by 2', () => {

@@ -1,5 +1,5 @@
 import type { Map } from './map/map';
-import type { Filter } from './filter';
+import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach';
 import { Type } from './common';
 
