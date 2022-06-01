@@ -1,13 +1,13 @@
-import { Type } from '../common';
+import { Kind } from '../common';
 
 export type Take = {
-  type: Type.TAKE;
+  kind: Kind.TAKE;
   run: () => number;
 };
 
 export function take(num: number): Take {
   return {
-    type: Type.TAKE,
+    kind: Kind.TAKE,
     run: () => num
   };
 }

@@ -1,7 +1,7 @@
-import { Type } from '../common';
+import { Kind } from '../common';
 
 export type Filter<T> = {
-  type: Type.FILTER;
+  kind: Kind.FILTER;
   run: (value: T, index: number) => boolean;
 };
 
@@ -9,7 +9,7 @@ export function filter<TValue>(
   predicate: (value: TValue, index: number) => boolean
 ): Filter<TValue> {
   return {
-    type: Type.FILTER,
+    kind: Kind.FILTER,
     run: (value: TValue, index: number) => predicate(value, index)
   };
 }

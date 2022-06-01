@@ -1,7 +1,7 @@
 import type { Map } from './map/map';
 import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach/forEach';
-import { Type } from './common';
+import { Kind } from './common';
 import { Take } from './take/take';
 
 /**
@@ -24,7 +24,7 @@ export function fuzion<T>(
   let length = input.length;
 
   operators = operators.filter(operator => {
-    if (operator.type === Type.TAKE) {
+    if (operator.kind === Kind.TAKE) {
       length = Math.min(length, operator.run());
       return false;
     }
@@ -39,9 +39,9 @@ export function fuzion<T>(
     for (const operator of operators) {
       const value = operator.run(currentValue, index);
 
-      if (operator.type === Type.MAP) {
+      if (operator.kind === Kind.MAP) {
         currentValue = value;
-      } else if (operator.type === Type.FILTER && !value) {
+      } else if (operator.kind === Kind.FILTER && !value) {
         // no need to run any handler next, it's abandoned value now
         shouldSkip = true;
         break;
