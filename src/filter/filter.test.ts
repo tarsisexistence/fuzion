@@ -10,4 +10,8 @@ describe('filter', () => {
       )
     ).toEqual([6, 9]);
   });
+
+  test('should filter with Boolean', () => {
+    expect(fuzion([true, false, true], filter(Boolean))).toEqual([true, true]);
+  });
 });

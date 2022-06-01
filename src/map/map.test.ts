@@ -2,7 +2,7 @@ import { map } from './map';
 import { fuzion } from '../fuzion';
 
 describe('map', () => {
-  test('should map indices instead of values', () => {
+  test('should return indices', () => {
     expect(
       fuzion(
         [1, 2, 3],
@@ -20,7 +20,7 @@ describe('map', () => {
     ).toEqual([2, 4, 6]);
   });
 
-  test('should stringify multiplied values by 2 with 2 map functions', () => {
+  test('should stringify multiplied values by 2 with through two map functions', () => {
     expect(
       fuzion(
         [1, 2, 3],
@@ -28,5 +28,17 @@ describe('map', () => {
         map<number, string>(a => String(a))
       )
     ).toEqual(['2', '4', '6']);
+  });
+
+  // TODO: auto typings
+  test('should map three times with different data types', () => {
+    expect(
+      fuzion(
+        [1, 2, 3],
+        map<number, number>(a => a * 2),
+        map(a => String(a)),
+        map(a => a + 1)
+      )
+    ).toEqual(['21', '41', '61']);
   });
 });
