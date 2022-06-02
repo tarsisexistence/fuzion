@@ -1,13 +1,12 @@
+import { Kind } from './common';
 import type { Map } from './map/map';
 import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach/forEach';
-import { Kind } from './common';
-import { Take } from './take/take';
+import type { Take } from './take/take';
 
 /**
  * Typing https://github.com/ReactiveX/rxjs/blob/master/src/internal/util/pipe.ts
  * Reduce
- * Take
  * First
  * Has
  * Find
