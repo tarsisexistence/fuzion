@@ -35,7 +35,7 @@ describe('[operator] map', () => {
     expect(
       fuzion(
         [1, 2, 3],
-        map<number, number>(a => a * 2),
+        map(a => a * 2),
         map(a => String(a)),
         map(a => a + 1)
       )

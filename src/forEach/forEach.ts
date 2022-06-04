@@ -10,9 +10,9 @@ export type ForEach<T> = {
  * rxjs "tap" analogue
  * does not change array values
  */
-export function forEach<TValue>(callback: ForEachFn<TValue>): ForEach<TValue> {
+export function forEach<TValue>(fn: ForEachFn<TValue>): ForEach<TValue> {
   return {
     kind: Kind.FOR_EACH,
-    run: callback
+    run: fn
   };
 }

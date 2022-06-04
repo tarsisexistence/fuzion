@@ -7,11 +7,11 @@ export type Map<TValue, TResult> = {
 };
 
 export function map<TValue, TResult>(
-  callback: MapFn<TValue, TResult>
+  fn: MapFn<TValue, TResult>
 ): Map<TValue, TResult> {
   return {
     kind: Kind.MAP,
-    run: callback
+    run: fn
   };
 }
 

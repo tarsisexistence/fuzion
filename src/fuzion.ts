@@ -1,5 +1,5 @@
 import { Kind } from './common';
-import type { Map } from './map/map';
+import type { Map, MapFn } from './map/map';
 import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach/forEach';
 import type { Take } from './take/take';
@@ -13,7 +13,7 @@ import type { Take } from './take/take';
  */
 export function fuzion<T>(
   input: T[],
-  ...operators: (Map<T, any> | Filter<T> | ForEach<T> | Take)[]
+  ...operators: (Map<any, any> | Filter<any> | ForEach<any> | Take)[]
 ): T[] {
   if (input.length === 0 || operators.length === 0) {
     return input;
@@ -57,3 +57,10 @@ export function fuzion<T>(
 
   return output;
 }
+
+/**
+ * 1. inner type
+ * 2. result type ?
+ * 3. map result type ?
+ * 4. change intermediate type after operator run
+ */
