@@ -1,6 +1,6 @@
 import { Kind } from '../common';
 
-export type FilterFn<T> = (value: T, index: number) => boolean;
+export type FilterFn<T> = (value: T, index: number) => value is T;
 export type Filter<T> = {
   kind: Kind.FILTER;
   run: FilterFn<T>;
