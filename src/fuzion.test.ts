@@ -80,7 +80,6 @@ describe('fuzion', () => {
     ).toEqual([false, false]);
   });
 
-  // TODO: with proved strict typing
   test('should apply 9 operators', () => {
     expect(
       fuzion(
@@ -96,6 +95,25 @@ describe('fuzion', () => {
         forEach(() => () => {}), // 9
       ),
     ).toEqual([false, false]);
+  });
+
+  test('should apply 9 operators with proved strict typing', () => {
+    expect(
+      fuzion(
+        [1, 2, 3, 4],
+        map(a => a + 1), // 1
+        map(a => a.toFixed(0)), // 2
+        map(a => a.charCodeAt(0)), // 3
+        map(a => a.toFixed(0)), // 4
+        map(a => a.charCodeAt(0)), // 5
+        map(a => a.toFixed(0)), // 6
+        map(a => a.charCodeAt(0)), // 7
+        map(a => a.toFixed(0)), // 8
+        map(a => a.charCodeAt(0)), // 9
+        map(a => a.toFixed(0)), // 8
+        map(a => a.charCodeAt(0)), // 9
+      ),
+    ).toEqual([49, 50, 51, 52]);
   });
 
   test('should apply 11 operators', () => {
@@ -115,5 +133,25 @@ describe('fuzion', () => {
         forEach(() => new String('s')), // 11
       ),
     ).toEqual([false, false]);
+  });
+
+  test('should apply 11 operators with any typing in the end and throw', () => {
+    expect(
+      fuzion(
+        [1, 2, 3, 4],
+        map(a => a + 1), // 1
+        map(a => a.toFixed(0)), // 2
+        map(a => a.charCodeAt(0)), // 3
+        map(a => a.toFixed(0)), // 4
+        map(a => a.charCodeAt(0)), // 5
+        map(a => a.toFixed(0)), // 6
+        map(a => a.charCodeAt(0)), // 7
+        map(a => a.toFixed(0)), // 8
+        map(a => a.charCodeAt(0)), // 9
+        map(a => a.toFixed(0)), // 8
+        map(a => a.charCodeAt(0)), // 9
+        map(a => a.charCodeAt(0)), // 10 any (number does not have charCodeAt() but typing skips it since the input is "any"
+      ),
+    ).toThrow();
   });
 });
