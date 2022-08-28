@@ -1,7 +1,7 @@
 import { fuzion } from './fuzion';
 import { map } from './map/map';
 import { filter } from './filter/filter';
-// import { forEach } from './forEach/forEach';
+import { forEach } from './forEach/forEach';
 
 describe('fuzion', () => {
   test('should return empty array when input is empty and empty handlers', () => {
@@ -67,5 +67,16 @@ describe('fuzion', () => {
         filter(a => a === true)
       )
     ).toEqual([true, true]);
+  });
+
+  test('should filter, map, and log via forEach', () => {
+    expect(
+      fuzion(
+        [true, false, true],
+        filter(a => a === true),
+        map(a => !a),
+        forEach(console.log)
+      )
+    ).toEqual([false, false]);
   });
 });
