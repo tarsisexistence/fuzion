@@ -11,15 +11,30 @@ import type { Take } from './take/take';
  * Has
  * Find
  */
-export function fuzion<T>(
-  input: T[],
-  ...operators: (Map<any, any> | Filter<any> | ForEach<any> | Take)[]
-): T[] {
+
+type operators<T, O> = Map<T, O> | Filter<T> | ForEach<T> | Take;
+
+export function fuzion<TArgs extends any, R1, R2, R3>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>
+): R3;
+export function fuzion<TArgs extends any, R1, R2>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>
+): R2;
+export function fuzion<TArgs extends any, R1>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>
+): R1;
+export function fuzion<TArgs>(input: TArgs[], ...operators: any[]): any[] {
   if (input.length === 0 || operators.length === 0) {
     return input;
   }
 
-  const output: T[] = [];
+  const output = [];
   let length = input.length;
 
   operators = operators.filter(operator => {

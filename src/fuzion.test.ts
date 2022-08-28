@@ -1,7 +1,7 @@
 import { fuzion } from './fuzion';
 import { map } from './map/map';
 import { filter } from './filter/filter';
-import { forEach } from './forEach/forEach';
+// import { forEach } from './forEach/forEach';
 
 describe('fuzion', () => {
   test('should return empty array when input is empty and empty handlers', () => {
@@ -17,7 +17,17 @@ describe('fuzion', () => {
       fuzion(
         [1, 3, 6, 9],
         filter(a => a > 5),
-        map<number, number>(a => a * 2)
+        map(a => a * 2)
+      )
+    ).toEqual([12, 18]);
+  });
+
+  test('should filter items more than 10 after multiplied by 2', () => {
+    expect(
+      fuzion(
+        [1, 3, 6, 9],
+        map(a => a * 2),
+        filter(a => a > 10)
       )
     ).toEqual([12, 18]);
   });
