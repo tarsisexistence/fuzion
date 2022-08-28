@@ -22,6 +22,16 @@ describe('fuzion', () => {
     ).toEqual([12, 18]);
   });
 
+  test('should filter numbers and map them', () => {
+    expect(
+      fuzion(
+        [1, 3, 6, 's'],
+        filter((x: any): x is number => typeof x === 'number'),
+        map(a => a * 2)
+      )
+    ).toEqual([12, 18]);
+  });
+
   test('should filter items more than 10 after multiplied by 2', () => {
     expect(
       fuzion(
