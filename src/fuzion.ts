@@ -13,7 +13,51 @@ import type { Take } from './take/take';
  */
 
 type operators<T, O> = Map<T, O> | Filter<T> | ForEach<T> | Take;
-
+// export function fuzion(): typeof identity;
+// export function fuzion<
+//   TArgs extends any,
+//   R1,
+//   R2,
+//   R3,
+//   R4,
+//   R5,
+//   R6,
+//   R7,
+//   R8,
+//   R9,
+//   TResult,
+// >(
+//   ...fns: [
+//     input: TArgs[],
+//     f1: operators<TArgs, R1>,
+//     f2: operators<R1, R2>,
+//     f3: operators<R2, R3>,
+//     f4: operators<R3, R4>,
+//     f5: operators<R4, R5>,
+//     f6: operators<R5, R6>,
+//     f7: operators<R6, R7>,
+//     f8: operators<R7, R8>,
+//     f9: operators<R8, R9>,
+//     ...intermediateOperators: Array<operators<any, any>>,
+//     fnLast: (a: unknown) => TResult,
+//   ]
+// ): TResult;
+// TODO: support last
+export function fuzion<TArgs extends any, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
+  ...fns: [
+    input: TArgs[],
+    f1: operators<TArgs, R1>,
+    f2: operators<R1, R2>,
+    f3: operators<R2, R3>,
+    f4: operators<R3, R4>,
+    f5: operators<R4, R5>,
+    f6: operators<R5, R6>,
+    f7: operators<R6, R7>,
+    f8: operators<R7, R8>,
+    f9: operators<R8, R9>,
+    ...intermediateOperators: Array<operators<any, any>>,
+  ]
+): any;
 export function fuzion<TArgs extends any, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
   input: TArgs[],
   f1: operators<TArgs, R1>,
