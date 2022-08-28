@@ -17,8 +17,8 @@ describe('fuzion', () => {
       fuzion(
         [1, 3, 6, 9],
         filter(a => a > 5),
-        map(a => a * 2)
-      )
+        map(a => a * 2),
+      ),
     ).toEqual([12, 18]);
   });
 
@@ -27,8 +27,8 @@ describe('fuzion', () => {
       fuzion(
         [1, 3, 6, 's'],
         filter((x: any): x is number => typeof x === 'number'),
-        map(a => a * 2)
-      )
+        map(a => a * 2),
+      ),
     ).toEqual([12, 18]);
   });
 
@@ -37,8 +37,8 @@ describe('fuzion', () => {
       fuzion(
         [1, 3, 6, 9],
         map(a => a * 2),
-        filter(a => a > 10)
-      )
+        filter(a => a > 10),
+      ),
     ).toEqual([12, 18]);
   });
 
@@ -46,8 +46,8 @@ describe('fuzion', () => {
     expect(
       fuzion(
         [2, 4, 6],
-        map(a => a.toFixed(1))
-      )
+        map(a => a.toFixed(1)),
+      ),
     ).toEqual(['2.0', '4.0', '6.0']);
   });
 
@@ -55,8 +55,8 @@ describe('fuzion', () => {
     expect(
       fuzion(
         ['2', '4', '6'],
-        map(a => a.concat('0'))
-      )
+        map(a => a.concat('0')),
+      ),
     ).toEqual(['20', '40', '60']);
   });
 
@@ -64,8 +64,8 @@ describe('fuzion', () => {
     expect(
       fuzion(
         [true, false, true],
-        filter(a => a === true)
-      )
+        filter(a => a === true),
+      ),
     ).toEqual([true, true]);
   });
 
@@ -75,8 +75,25 @@ describe('fuzion', () => {
         [true, false, true],
         filter(a => a === true),
         map(a => !a),
-        forEach(console.log)
-      )
+        forEach(console.log),
+      ),
+    ).toEqual([false, false]);
+  });
+
+  test('should apply 9 operators', () => {
+    expect(
+      fuzion(
+        [1, 2, 3, 4],
+        forEach(() => null),
+        forEach(() => undefined),
+        forEach(() => 1),
+        forEach(() => 's'),
+        forEach(() => true),
+        forEach(() => {}),
+        forEach(() => []),
+        forEach(() => Symbol()),
+        forEach(() => () => {}),
+      ),
     ).toEqual([false, false]);
   });
 });

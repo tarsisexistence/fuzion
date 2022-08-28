@@ -14,20 +14,77 @@ import type { Take } from './take/take';
 
 type operators<T, O> = Map<T, O> | Filter<T> | ForEach<T> | Take;
 
+export function fuzion<TArgs extends any, R1, R2, R3, R4, R5, R6, R7, R8, R9>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>,
+  f4: operators<R3, R4>,
+  f5: operators<R4, R5>,
+  f6: operators<R5, R6>,
+  f7: operators<R6, R7>,
+  f8: operators<R7, R8>,
+  f9: operators<R8, R9>,
+): R9;
+export function fuzion<TArgs extends any, R1, R2, R3, R4, R5, R6, R7, R8>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>,
+  f4: operators<R3, R4>,
+  f5: operators<R4, R5>,
+  f6: operators<R5, R6>,
+  f7: operators<R6, R7>,
+  f8: operators<R7, R8>,
+): R8;
+export function fuzion<TArgs extends any, R1, R2, R3, R4, R5, R6, R7>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>,
+  f4: operators<R3, R4>,
+  f5: operators<R4, R5>,
+  f6: operators<R5, R6>,
+  f7: operators<R6, R7>,
+): R7;
+export function fuzion<TArgs extends any, R1, R2, R3, R4, R5, R6>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>,
+  f4: operators<R3, R4>,
+  f5: operators<R4, R5>,
+  f6: operators<R5, R6>,
+): R6;
+export function fuzion<TArgs extends any, R1, R2, R3, R4, R5>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>,
+  f4: operators<R3, R4>,
+  f5: operators<R4, R5>,
+): R5;
+export function fuzion<TArgs extends any, R1, R2, R3, R4>(
+  input: TArgs[],
+  f1: operators<TArgs, R1>,
+  f2: operators<R1, R2>,
+  f3: operators<R2, R3>,
+  f4: operators<R3, R4>,
+): R4;
 export function fuzion<TArgs extends any, R1, R2, R3>(
   input: TArgs[],
   f1: operators<TArgs, R1>,
   f2: operators<R1, R2>,
-  f3: operators<R2, R3>
+  f3: operators<R2, R3>,
 ): R3;
 export function fuzion<TArgs extends any, R1, R2>(
   input: TArgs[],
   f1: operators<TArgs, R1>,
-  f2: operators<R1, R2>
+  f2: operators<R1, R2>,
 ): R2;
 export function fuzion<TArgs extends any, R1>(
   input: TArgs[],
-  f1: operators<TArgs, R1>
+  f1: operators<TArgs, R1>,
 ): R1;
 export function fuzion<TArgs>(input: TArgs[], ...operators: any[]): any[] {
   if (input.length === 0 || operators.length === 0) {
