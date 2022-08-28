@@ -84,15 +84,15 @@ describe('fuzion', () => {
     expect(
       fuzion(
         [1, 2, 3, 4],
-        forEach(() => null),
-        forEach(() => undefined),
-        forEach(() => 1),
-        forEach(() => 's'),
-        forEach(() => true),
-        forEach(() => {}),
-        forEach(() => []),
-        forEach(() => Symbol()),
-        forEach(() => () => {}),
+        forEach(() => null), // 1
+        forEach(() => undefined), // 2
+        forEach(() => 1), // 3
+        forEach(() => 's'), // 4
+        forEach(() => true), // 5
+        forEach(() => {}), // 6
+        forEach(() => []), // 7
+        forEach(() => Symbol()), // 8
+        forEach(() => () => {}), // 9
       ),
     ).toEqual([false, false]);
   });
