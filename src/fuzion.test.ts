@@ -5,10 +5,12 @@ import { forEach } from './forEach/forEach';
 
 describe('fuzion', () => {
   test('should return empty array when input is empty and empty handlers', () => {
+    // @ts-ignore
     expect(fuzion([])).toEqual([]);
   });
 
   test('should return input array when empty handlers array', () => {
+    // @ts-ignore
     expect(fuzion([1, 2, 3])).toEqual([1, 2, 3]);
   });
 
@@ -29,7 +31,7 @@ describe('fuzion', () => {
         filter((x: any): x is number => typeof x === 'number'),
         map(a => a * 2),
       ),
-    ).toEqual([12, 18]);
+    ).toEqual([2, 6, 12]);
   });
 
   test('should filter items more than 10 after multiplied by 2', () => {
@@ -69,13 +71,13 @@ describe('fuzion', () => {
     ).toEqual([true, true]);
   });
 
-  test('should filter, map, and log via forEach', () => {
+  test('should filter, map, and do nothing in foreach', () => {
     expect(
       fuzion(
         [true, false, true],
         filter(a => a === true),
         map(a => !a),
-        forEach(console.log),
+        forEach(() => {}),
       ),
     ).toEqual([false, false]);
   });
@@ -94,7 +96,7 @@ describe('fuzion', () => {
         forEach(() => Symbol()), // 8
         forEach(() => () => {}), // 9
       ),
-    ).toEqual([false, false]);
+    ).toEqual([1, 2, 3, 4]);
   });
 
   test('should apply 9 operators with proved strict typing', () => {
@@ -113,7 +115,7 @@ describe('fuzion', () => {
         map(a => a.toFixed(0)), // 8
         map(a => a.charCodeAt(0)), // 9
       ),
-    ).toEqual([49, 50, 51, 52]);
+    ).toEqual([53, 53, 53, 53]);
   });
 
   test('should apply 11 operators', () => {
@@ -132,11 +134,11 @@ describe('fuzion', () => {
         forEach(() => Promise.resolve(5)), // 10
         forEach(() => new String('s')), // 11
       ),
-    ).toEqual([false, false]);
+    ).toEqual([1, 2, 3, 4]);
   });
 
   test('should apply 11 operators with any typing in the end and throw', () => {
-    expect(
+    expect(() =>
       fuzion(
         [1, 2, 3, 4],
         map(a => a + 1), // 1
@@ -152,6 +154,6 @@ describe('fuzion', () => {
         map(a => a.charCodeAt(0)), // 9
         map(a => a.charCodeAt(0)), // 10 any (number does not have charCodeAt() but typing skips it since the input is "any"
       ),
-    ).toThrow();
+    ).toThrowError(TypeError);
   });
 });
