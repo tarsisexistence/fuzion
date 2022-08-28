@@ -1,18 +1,17 @@
 import { Kind } from '../common';
 
-export type ForEachFn<T> = (value: T, index: number) => void;
 export type ForEach<T> = {
   kind: Kind.FOR_EACH;
-  run: ForEachFn<T>;
+  run: (value: T, index: number) => T;
 };
 
 /**
  * rxjs "tap" analogue
  * does not change array values
  */
-export function forEach<TValue>(fn: ForEachFn<TValue>): ForEach<TValue> {
+export function forEach<T>(fn: (value: T, index: number) => void): ForEach<T> {
   return {
     kind: Kind.FOR_EACH,
-    run: fn
+    run: fn as (value: T, index: number) => T,
   };
 }

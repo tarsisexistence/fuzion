@@ -82,6 +82,17 @@ describe('fuzion', () => {
     ).toEqual([false, false]);
   });
 
+  test('should do nothing in foreach, then filter and map values', () => {
+    expect(
+      fuzion(
+        [true, false, true],
+        forEach(() => {}),
+        filter(a => a === true),
+        map(a => !a),
+      ),
+    ).toEqual([false, false]);
+  });
+
   test('should apply 9 operators', () => {
     expect(
       fuzion(
