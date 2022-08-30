@@ -28,7 +28,7 @@ describe('fuzion', () => {
     expect(
       fuzion(
         [1, 3, 6, 's'],
-        filter((x: any): x is number => typeof x === 'number'),
+        filter((x): x is number => typeof x === 'number'),
         map(a => a * 2),
       ),
     ).toEqual([2, 6, 12]);
@@ -146,6 +146,26 @@ describe('fuzion', () => {
         forEach(() => new String('s')), // 11
       ),
     ).toEqual([1, 2, 3, 4]);
+  });
+
+  test('should apply 11 operators and return the num type', () => {
+    expect(
+        fuzion(
+            [1, 2, 3, 4],
+            forEach(() => null), // 1
+            forEach(() => undefined), // 2
+            forEach(() => 1), // 3
+            forEach(() => 's'), // 4
+            forEach(() => true), // 5
+            forEach(() => {}), // 6,,
+            forEach(() => []), // 7
+            forEach(() => Symbol()), // 8
+            forEach(() => () => {}), // 9
+            forEach(() => Promise.resolve(5)), // 10
+            forEach(() => new String('s')), // 11,
+            map(() => 1) // 12
+        ),
+    ).toEqual([1, 1, 1, 1]);
   });
 
   test('should apply 11 operators with any typing in the end and throw', () => {
