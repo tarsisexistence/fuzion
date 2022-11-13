@@ -3,6 +3,7 @@ import type { Map, MapFn } from './map/map';
 import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach/forEach';
 import type { Take } from './take/take';
+import { NEGATIVE_SYMBOL } from './filter/filter';
 
 /**
  * Typing https://github.com/ReactiveX/rxjs/blob/master/src/internal/util/pipe.ts
@@ -141,7 +142,7 @@ export function fuzion<TArgs>(input: TArgs[], ...operators: any[]): any[] {
 
       if (operator.kind === Kind.MAP) {
         currentValue = value;
-      } else if (operator.kind === Kind.FILTER && !value) {
+      } else if (operator.kind === Kind.FILTER && value === NEGATIVE_SYMBOL) {
         // no need to run any handler next, it's abandoned value now
         shouldSkip = true;
         break;
@@ -158,10 +159,3 @@ export function fuzion<TArgs>(input: TArgs[], ...operators: any[]): any[] {
 
   return output;
 }
-
-/**
- * 1. inner type
- * 2. result type ?
- * 3. map result type ?
- * 4. change intermediate type after operator run
- */
