@@ -6,8 +6,8 @@ describe('[operator] forEach', () => {
     expect(
       fuzion(
         [1, 2, 3],
-        forEach(a => a * 2)
-      )
+        forEach(a => a * 2),
+      ),
     ).toEqual([1, 2, 3]);
   });
 
@@ -18,7 +18,7 @@ describe('[operator] forEach', () => {
       arr,
       forEach((value, index) => {
         return (arr[index] = value + index);
-      })
+      }),
     );
 
     expect(arr).toEqual([1, 3, 5]);

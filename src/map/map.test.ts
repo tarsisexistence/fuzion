@@ -6,8 +6,8 @@ describe('[operator] map', () => {
     expect(
       fuzion(
         [1, 2, 3],
-        map((_, index) => index)
-      )
+        map((_, index) => index),
+      ),
     ).toEqual([0, 1, 2]);
   });
 
@@ -15,8 +15,8 @@ describe('[operator] map', () => {
     expect(
       fuzion(
         [1, 2, 3],
-        map<number, number>(a => a * 2)
-      )
+        map<number, number>(a => a * 2),
+      ),
     ).toEqual([2, 4, 6]);
   });
 
@@ -25,8 +25,8 @@ describe('[operator] map', () => {
       fuzion(
         [1, 2, 3],
         map<number, number>(a => a * 2),
-        map<number, string>(a => String(a))
-      )
+        map<number, string>(a => String(a)),
+      ),
     ).toEqual(['2', '4', '6']);
   });
 
@@ -37,8 +37,8 @@ describe('[operator] map', () => {
         [1, 2, 3],
         map(a => a * 2),
         map(a => String(a)),
-        map(a => a + 1)
-      )
+        map(a => a + 1),
+      ),
     ).toEqual(['21', '41', '61']);
   });
 });

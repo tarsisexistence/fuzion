@@ -150,21 +150,21 @@ describe('fuzion', () => {
 
   test('should apply 11 operators and return the num type', () => {
     expect(
-        fuzion(
-            [1, 2, 3, 4],
-            forEach(() => null), // 1
-            forEach(() => undefined), // 2
-            forEach(() => 1), // 3
-            forEach(() => 's'), // 4
-            forEach(() => true), // 5
-            forEach(() => {}), // 6,,
-            forEach(() => []), // 7
-            forEach(() => Symbol()), // 8
-            forEach(() => () => {}), // 9
-            forEach(() => Promise.resolve(5)), // 10
-            forEach(() => new String('s')), // 11,
-            map(() => 1) // 12
-        ),
+      fuzion(
+        [1, 2, 3, 4],
+        forEach(() => null), // 1
+        forEach(() => undefined), // 2
+        forEach(() => 1), // 3
+        forEach(() => 's'), // 4
+        forEach(() => true), // 5
+        forEach(() => {}), // 6,,
+        forEach(() => []), // 7
+        forEach(() => Symbol()), // 8
+        forEach(() => () => {}), // 9
+        forEach(() => Promise.resolve(5)), // 10
+        forEach(() => new String('s')), // 11,
+        map(() => 1), // 12
+      ),
     ).toEqual([1, 1, 1, 1]);
   });
 

@@ -8,6 +8,6 @@ export type Take = {
 export function take(num: number): Take {
   return {
     kind: Kind.TAKE,
-    run: () => num
+    run: () => num,
   };
 }

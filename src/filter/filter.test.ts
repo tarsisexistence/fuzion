@@ -6,8 +6,8 @@ describe('[operator] filter', () => {
     expect(
       fuzion(
         [1, 3, 6, 9],
-        filter(a => a > 5)
-      )
+        filter(a => a > 5),
+      ),
     ).toEqual([6, 9]);
   });
 
@@ -23,8 +23,8 @@ describe('[operator] filter', () => {
     expect(
       fuzion(
         ['q', 'w', 'e', 'r', 't', 'y'],
-        filter((_, i) => i % 2 === 0)
-      )
+        filter((_, i) => i % 2 === 0),
+      ),
     ).toEqual(['q', 'e', 't']);
   });
 });
