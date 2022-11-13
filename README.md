@@ -9,7 +9,7 @@ Shortcut fusion is an optimizer method that merges some function calls into one.
 
 <br/>
 
-#### Operators
+#### API
 
 So far, it supports the following operators:
 
