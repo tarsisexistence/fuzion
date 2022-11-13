@@ -5,11 +5,13 @@ import { forEach } from './forEach/forEach';
 
 describe('fuzion', () => {
   test('should return empty array when input is empty and empty handlers', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     expect(fuzion([])).toEqual([]);
   });
 
   test('should return input array when empty handlers array', () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     expect(fuzion([1, 2, 3])).toEqual([1, 2, 3]);
   });
@@ -143,6 +145,7 @@ describe('fuzion', () => {
         forEach(() => Symbol()), // 8
         forEach(() => () => {}), // 9
         forEach(() => Promise.resolve(5)), // 10
+        // eslint-disable-next-line no-new-wrappers
         forEach(() => new String('s')), // 11
       ),
     ).toEqual([1, 2, 3, 4]);
@@ -162,6 +165,7 @@ describe('fuzion', () => {
         forEach(() => Symbol()), // 8
         forEach(() => () => {}), // 9
         forEach(() => Promise.resolve(5)), // 10
+        // eslint-disable-next-line no-new-wrappers
         forEach(() => new String('s')), // 11,
         map(() => 1), // 12
       ),

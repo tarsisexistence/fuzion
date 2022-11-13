@@ -1,5 +1,5 @@
 import { Kind } from './common';
-import type { Map, MapFn } from './map/map';
+import type { Map } from './map/map';
 import type { Filter } from './filter/filter';
 import type { ForEach } from './forEach/forEach';
 import type { Take } from './take/take';
