@@ -30,7 +30,6 @@ describe('[operator] map', () => {
     ).toEqual(['2', '4', '6']);
   });
 
-  // TODO: auto typings
   test('should map three times with different data types', () => {
     expect(
       fuzion(

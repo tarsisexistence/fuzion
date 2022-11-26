@@ -14,6 +14,3 @@ export function map<TValue, TResult>(
     run: fn,
   };
 }
-
-// const cb = map((x: number) => String(x));
-// const res = cb.run(2, 0);

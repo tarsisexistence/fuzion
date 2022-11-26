@@ -18,7 +18,6 @@ export function filter<T>(
 ): Filter<T, any> {
   return {
     kind: Kind.FILTER,
-    // TODO: refactor type coercion
     run: (value, index) => {
       if (predicate(value, index)) {
         return value;
